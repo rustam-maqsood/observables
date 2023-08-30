@@ -1,0 +1,57 @@
+<button (click)="unsubscribe()">unsubscribe</button>
+<button (click)="subscribe()">subscribe</button>
+<div class="form">
+    <h2 id="registration">Registration Form</h2>
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+        <div ngModelGroup="personalDetails" #personalDetail="ngModelGroup">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Your Name.."
+        name="firstname" ngModel required #fname="ngModel">
+        <!-- <div><small *ngIf="fname.invalid && fname.touched">FirstName is the  Reruired  field</small></div> -->
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Your Last Name.."
+        name="lastname" ngModel required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Last email.."
+        name="email" ngModel required email>
+        <div><small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the Required field do not have value</small></div>
+    </div>
+
+        <label for="country">Country</label>
+        <select id="country" name="country" [ngModel]="defaultCountry">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">Usa</option>
+            <option value="india">India</option>
+            <option value="uk">UK</option>
+        </select>
+
+        <label for="gender">Gender</label>
+        <input type="radio" id="male" value="male" name="gender" ngModel>
+        <label for="male">Male</label>
+        <input type="radio" id="female" value="female" name="gender" ngModel>
+        <label for="female">Female</label>
+        <input type="radio" id="other" value="other" name="gender" ngModel>
+        <label for="other">Other</label>
+        <br><br>
+
+        <label>Hobbies <i>(Optional)</i></label>
+        <div class="form-inline">
+            <label><input type="checkbox" value="sports" name="hobbies" ngModel>Sports</label>
+            <label><input type="checkbox" value="movies" name="hobbies" ngModel>Movies</label>
+            <label><input type="checkbox" value="music" name="hobbies" ngModel>Music</label>
+        </div>
+
+        <input type="submit" value="Submit" id="btn" (click)="onSubmit()">
+    </form>
+</div>
+<div class="form-data">
+    <h3>Form Data</h3>
+    <p>First Name:<b>{{firstname}}</b></p>
+    <p>Last Name: <b>{{lastname}}</b></p>
+    <p>Email:<b>{{email}}</b></p>
+    <p>country:<b>{{country}}</b></p>
+    <p>Gender: <b>{{gen}}</b></p>
+</div>
